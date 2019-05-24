@@ -36,3 +36,12 @@ Put the new firmware in this directory, and make sure it's called Raise-Firmware
 Run the programmer and follow the instructions. You will be promtpted to press the Escape key:
 
     ./program.py
+
+## Problems
+
+If you get a message that the bootloader is found, but that the programming failed with "no device found",
+this can be because modemmanager takes control of the serial port. This can be solved by removing modemmanager:
+
+    sudo apt remove modemmanager
+
+Or by using udev rules.
