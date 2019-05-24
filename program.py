@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import serial.tools.list_ports
-import time, subprocess, serial
+import time, subprocess, serial, os
 
 BOOTLOADER_VIDPID = '1209:2200'
 RAISE_VIDPID = '1209:2201'
@@ -20,7 +20,6 @@ def program_firmware():
     for port in ports:
         print("found %s port on %s" % (port.usb_description(), port.device))
         print("programming firmware")
-        import os
         os.system('bossac -i -d --port %s -e -o 0x2000 -w ./Raise-Firmware.ino.bin -R' % port.device)
         return True
     else:

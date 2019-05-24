@@ -23,6 +23,10 @@ Install a new version of bossac. You may need to apt-get install libwxgtk3.0-dev
     make
     sudo cp bin/bossac /usr/local/bin
 
+Install pyserial
+
+    sudo pip install pyserial
+
 ## Get new firmware
 
 Put the new firmware in this directory, and make sure it's called Raise-Firmware.ino.bin
