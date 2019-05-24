@@ -16,7 +16,7 @@ This programmer will attempt to find a plugged in Huble, reset it via serial and
 
 ## Install requirements
 
-Install a new version of bossac.
+Install a new version of bossac. You may need to apt-get install libwxgtk3.0-dev
 
     git clone https://github.com/shumatech/BOSSA
     cd BOSSA
