@@ -20,7 +20,7 @@ def program_firmware():
     for port in ports:
         print("found %s port on %s" % (port.usb_description(), port.device))
         print("programming firmware")
-        os.system('bossac -i -d --port %s -e -o 0x2000 -w ./Raise-Firmware.ino.bin -R' % port.device)
+        os.system('./bossac -i -d --port %s -e -o 0x2000 -w ./Raise-Firmware.ino.bin -R' % port.device)
         return True
     else:
         return False
