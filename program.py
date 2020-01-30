@@ -5,6 +5,8 @@ import time, subprocess, serial, os
 BOOTLOADER_VIDPID = '1209:2200'
 RAISE_VIDPID = '1209:2201'
 
+firmware_file = "./Raise-Firmware.ino.bin"
+
 def reset_w_baud(baud=1200):
     ports = serial.tools.list_ports.grep(RAISE_VIDPID) # find the right port
     for port in ports:
@@ -20,10 +22,14 @@ def program_firmware():
     for port in ports:
         print("found %s port on %s" % (port.usb_description(), port.device))
         print("programming firmware")
-        os.system('./bossac -i -d --port %s -e -o 0x2000 -w ./Raise-Firmware.ino.bin -R' % port.device)
+        os.system('./bossac -i -d --port %s -e -o 0x2000 -w %s -R' % (port.device, firmware_file))
         return True
     else:
         return False
+
+# check to see if firmware file is there
+if not os.path.exists(firmware_file):
+    exit("can't find firmware file %s" % firmware_file)
 
 # maybe already in bootloader mode
 if program_firmware():
